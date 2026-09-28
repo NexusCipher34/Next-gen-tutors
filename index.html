@@ -15,7 +15,6 @@
             --light: #f8fafc;
             --gray: #64748b;
             --success: #22c55e;
-            --gold: #d97706;
         }
 
         * {
@@ -68,17 +67,6 @@
             color: white;
             padding: 12rem 5% 8rem 5%;
             text-align: center;
-        }
-
-        .badge {
-            background: var(--accent);
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 1rem;
         }
 
         .badge-gold {
@@ -143,7 +131,61 @@
             gap: 2.5rem;
         }
 
-        .card, .pricing-card {
+        /* Enhanced Cards Styling */
+        .card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.12);
+            border-color: #cbd5e1;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.85rem;
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 0.975rem;
+            line-height: 1.6;
+        }
+
+        .pricing-card {
             background: white;
             padding: 2.5rem 2rem;
             border-radius: 20px;
@@ -209,7 +251,6 @@
             font-size: 0.95rem;
         }
 
-        /* Promo Banner for Quran Offer */
         .promo-banner {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: white;
@@ -289,24 +330,28 @@
     <section class="hero">
         <div class="badge-gold">✨ SPECIAL OFFER: FREE QURAN & TAJWEED FOR FIRST 3 STUDENTS</div>
         <h1>Master Your Future with NextGen Tutors</h1>
-        <p>Expert Online & Physical tutoring in Bhara Kahu, Islamabad for Science, Math, Computer Science Fundamentals, and English (Grades 1–12).</p>
+        <p>Expert Online & Physical tutoring in Bhara Kahu, Islamabad for Science, Math, Computer Science, and Federal Board Curriculum (Grades 1–12).</p>
         <a href="#register" class="btn">Book Free Trial Class</a>
     </section>
 
+    <!-- Refined & Polished Why Choose Us Section -->
     <section id="about">
         <h2 class="section-title">Why Choose NextGen Tutors?</h2>
         <div class="grid">
             <div class="card">
-                <h3>Hybrid Flexibility</h3>
-                <p>Structured physical classes in Bhara Kahu or budget-friendly interactive online sessions from home.</p>
+                <div class="card-icon">🏛️</div>
+                <h3>Hybrid & Local Flexibility</h3>
+                <p>Choose between structured physical classes right here in Bhara Kahu or budget-friendly, high-definition interactive online sessions from home.</p>
             </div>
             <div class="card">
-                <h3>Core STEM Focus</h3>
-                <p>Specialized instruction in Advanced Mathematics, Sciences, and Computer Science concepts.</p>
+                <div class="card-icon">🔬</div>
+                <h3>Core STEM & Board Focus</h3>
+                <p>Specialized instruction tailored for Matric, FSc, and foundational sciences, building deep analytical thinking and exam confidence.</p>
             </div>
             <div class="card">
-                <h3>Consistent Mentorship</h3>
-                <p>Intensive 6-days-a-week study schedules ensuring structured homework and exam readiness.</p>
+                <div class="card-icon">📅</div>
+                <h3>Consistent 6-Day Mentorship</h3>
+                <p>Intensive 6-days-a-week study schedules ensuring active homework tracking, regular concept checks, and guaranteed academic progress.</p>
             </div>
         </div>
     </section>
@@ -314,7 +359,6 @@
     <section id="pricing" style="background: #f1f5f9;">
         <h2 class="section-title">Transparent Pricing & Special Offers</h2>
 
-        <!-- Special Promo Banner -->
         <div class="promo-banner">
             <h3>🌟 First 3 Registrations Bonus!</h3>
             <p>Get a completely <strong>FREE 30-minute online Quran Studies & Tajweed lecture</strong> every Friday, Saturday, and Sunday!</p>
@@ -344,7 +388,7 @@
             
             <!-- Grades 9-10 -->
             <div class="pricing-card popular">
-                <h3>Grades 9–10 (Matric / O-Levels)</h3>
+                <h3>Grades 9–10 (Matric Group)</h3>
                 <div class="discount-badge">⭐ Most Popular Stream Package</div>
                 <div class="price-row">
                     <div class="price-box">
@@ -365,7 +409,7 @@
 
             <!-- Grades 11-12 -->
             <div class="pricing-card">
-                <h3>FSc / A-Levels (Grades 11–12)</h3>
+                <h3>FSc (Grades 11–12)</h3>
                 <div class="discount-badge">🎁 Advanced Coaching Tier</div>
                 <div class="price-row">
                     <div class="price-box">
@@ -402,8 +446,8 @@
                     <select id="grade" required onchange="handleGradeChange()">
                         <option value="">Select Grade</option>
                         <option value="Grade 1-8">Primary / Middle (Grades 1–8)</option>
-                        <option value="Grade 9-10">Matric / O-Levels (Grades 9–10)</option>
-                        <option value="Grade 11-12">FSc / A-Levels (Grades 11–12)</option>
+                        <option value="Grade 9-10">Matric (Grades 9–10)</option>
+                        <option value="Grade 11-12">FSc (Grades 11–12)</option>
                     </select>
                 </div>
 
@@ -487,13 +531,13 @@
                     <option value="All Subjects Package">All Subjects Package</option>
                 `;
             } else if (grade === 'Grade 9-10') {
-                subjectLabel.textContent = "Select Academic Stream (Grades 9–10)";
+                subjectLabel.textContent = "Select Academic Stream (Matric Grades 9–10)";
                 subjectSelect.innerHTML += `
                     <option value="Science">Science Group</option>
                     <option value="Arts">Arts Group</option>
                 `;
             } else if (grade === 'Grade 11-12') {
-                subjectLabel.textContent = "Select Primary Subject Package (FSc / A-Levels)";
+                subjectLabel.textContent = "Select Primary Subject Package (FSc)";
                 subjectSelect.innerHTML += `
                     <option value="Pre-Medical / Science">Pre-Medical / Science</option>
                     <option value="Pre-Engineering / Mathematics">Pre-Engineering / Mathematics</option>
