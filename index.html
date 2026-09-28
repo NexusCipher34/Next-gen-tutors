@@ -3,461 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Tutors - Expert Online & Physical Tutoring</title>
+    <title>NextGen Tutors | Expert Online & Physical Tutoring in Bhara Kahu, Islamabad</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0f4c5c;
-            --accent: #17a2b8;
-            --success: #10b981;
-            --bg-light: #f8fafc;
-            --text-dark: #1e293b;
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --accent: #f97316;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #22c55e;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
 
-        /* Navbar */
-        nav {
+        /* Header & Navbar */
+        header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 50px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
+            padding: 1rem 5%;
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: var(--primary);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--dark);
             font-weight: 600;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
+        nav a:hover, nav a.active {
+            color: var(--primary);
         }
 
         /* Hero Section */
         .hero {
-            height: 90vh;
-            background: linear-gradient(135deg, rgba(15, 76, 92, 0.9), rgba(23, 162, 184, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             color: white;
-            padding: 0 20px;
-            margin-top: 60px;
-            animation: fadeIn 1.2s ease-in-out;
+            padding: 10rem 5% 6rem 5%;
+            text-align: center;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: 3rem;
             font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 1.15rem;
             max-width: 700px;
-            margin-bottom: 30px;
-        }
-
-        .badge-offer {
-            background: #ff5722;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: bounce 2s infinite;
+            margin: 0 auto 2rem auto;
+            color: #e2e8f0;
         }
 
         .btn {
-            background: #ffffff;
-            color: var(--primary);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: bold;
+            background: var(--primary);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            background: #f1f5f9;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        /* Section Layouts */
+        /* Sections Container */
         section {
-            padding: 80px 50px;
+            padding: 5rem 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 36px;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: var(--dark);
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: #64748b;
-            margin-bottom: 50px;
-            font-size: 16px;
-        }
-
-        /* Pricing Grid */
-        .pricing-grid {
+        /* Services & Grid */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .price-card {
+        .card {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
 
-        .price-card:hover {
-            transform: translateY(-8px);
+        .card:hover {
+            transform: translateY(-5px);
         }
 
-        .price-card.popular {
-            border: 2px solid var(--accent);
-        }
-
-        .price-card h3 {
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
             color: var(--primary);
-            font-size: 22px;
-            margin-bottom: 10px;
         }
 
-        .price-card .price {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--accent);
-            margin: 15px 0;
-        }
-
-        .price-card .old-price {
-            text-decoration: line-through;
-            color: #94a3b8;
-            font-size: 18px;
-        }
-
-        /* How It Works & Familiarization */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .step-box {
+        /* Pricing Packages */
+        .pricing-card {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border-left: 5px solid var(--accent);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            position: relative;
         }
 
-        .step-box h4 {
-            color: var(--primary);
-            font-size: 20px;
-            margin-bottom: 10px;
+        .pricing-card.popular {
+            border-color: var(--primary);
+            transform: scale(1.03);
         }
 
-        /* Application Form Section */
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .discount-note {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Registration Form Section */
         .form-container {
             background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
             max-width: 700px;
             margin: 0 auto;
+            border: 1px solid #e2e8f0;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 0.85rem;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
         }
 
-        .form-row {
-            display: flex;
-            gap: 20px;
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
         }
 
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
+        .alert-success {
+            display: none;
+            background: #dcfce7;
+            color: #166534;
+            padding: 1rem;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #093842;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
         }
 
         /* Footer */
         footer {
-            background: #0f172a;
-            color: white;
+            background: var(--dark);
+            color: #94a3b8;
             text-align: center;
-            padding: 40px;
-            margin-top: 60px;
+            padding: 3rem 5%;
+            font-size: 0.95rem;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        footer p {
+            margin-bottom: 0.5rem;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-8px);}
-            60% {transform: translateY(-4px);}
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            nav { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">NextGen Tutors</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#how-it-works">How Classes Work</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#apply">Register Now</a></li>
-        </ul>
-    </nav>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">NextGen Tutors</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">How Classes Work</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#register" class="btn" style="padding: 0.5rem 1.25rem; color: white;">Register Now</a>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="badge-offer">🔥 Launch Special: 30% Off for First 20 Students</div>
+    <section class="hero">
+        <div class="badge">🔥 LAUNCH SPECIAL: 30% OFF FOR FIRST 20 STUDENTS</div>
         <h1>Master Your Future with NextGen Tutors</h1>
         <p>Expert Online & Physical tutoring in Bhara Kahu, Islamabad for Science, Math, Computer Science (C++), and English (Grades 1–12).</p>
-        <a href="#apply" class="btn">Book Free Trial Class</a>
-    </header>
+        <a href="#register" class="btn">Book Free Trial Class</a>
+    </section>
 
     <!-- About Section -->
     <section id="about">
         <h2 class="section-title">Why Choose NextGen Tutors?</h2>
-        <p class="section-subtitle">We bridge the gap between traditional learning and modern academic success.</p>
-        <div class="steps-grid">
-            <div class="step-box">
-                <h4>🎯 Personalized Attention</h4>
-                <p>One-on-one and small batch mentoring designed to cater to every individual student's learning speed.</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Hybrid Flexibility</h3>
+                <p>Choose between comfortable physical classes right here in Bhara Kahu or interactive online sessions from home.</p>
             </div>
-            <div class="step-box">
-                <h4>💻 Tech & Science Focus</h4>
-                <p>Specialized training in core sciences alongside programming concepts like C++ logic for the modern tech era.</p>
+            <div class="card">
+                <h3>Expert STEM Focus</h3>
+                <p>Specialized instruction in Advanced Mathematics, Sciences, and foundational Computer Science including C++ programming.</p>
             </div>
-            <div class="step-box">
-                <h4>📍 Flexible Learning Modes</h4>
-                <p>Choose between immersive physical classes right here in Bhara Kahu or convenient online sessions from home.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- How Classes Work & Familiarization -->
-    <section id="how-it-works" style="background: #ffffff; border-radius: 15px;">
-        <h2 class="section-title">How Our Classes Work</h2>
-        <p class="section-subtitle">A transparent, step-by-step guide on how students get familiar with our system.</p>
-        
-        <div class="steps-grid">
-            <div class="step-box">
-                <h4>1. Free Trial Session</h4>
-                <p>Book a free 30-minute demo class to experience our interactive whiteboards, meet the teacher, and check out the environment before paying anything.</p>
-            </div>
-            <div class="step-box">
-                <h4>2. Interactive Learning</h4>
-                <p>Classes take place via high-definition Zoom/Google Meet calls (online) or structured physical setups, utilizing screen sharing, digital notes, and real-time problem-solving.</p>
-            </div>
-            <div class="step-box">
-                <h4>3. Continuous Feedback</h4>
-                <p>Parents receive regular updates, chapter progress reports, and test scores to keep track of their child's academic development.</p>
+            <div class="card">
+                <h3>Personalized Mentorship</h3>
+                <p>Small batch sizes and tailored attention to track student growth, clear concepts, and boost exam performance.</p>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing">
-        <h2 class="section-title">Affordable Monthly Packages</h2>
-        <p class="section-subtitle">Take advantage of our limited-time 30% launch discount!</p>
-        
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Grades 1 - 5</h3>
-                <p>Junior Foundation & Homework Help</p>
-                <div class="price">Rs. 3,000 <span style="font-size: 14px;">/mo</span></div>
-                <div class="old-price">Rs. 4,300</div>
+    <section id="pricing" style="background: #f1f5f9;">
+        <h2 class="section-title">Transparent Monthly Packages</h2>
+        <div class="grid">
+            <div class="pricing-card">
+                <h3>Basic Tier</h3>
+                <div class="discount-note">30% Early Bird Discount Applied</div>
+                <div class="price">Rs. 3,000 <span>/month</span></div>
+                <p>2 Days / Week Sessions<br>Core Subject Support (Math or Science)<br>Homework & Assignment Help</p>
             </div>
-            <div class="price-card">
-                <h3>Grades 5 - 8</h3>
-                <p>Middle School Core Concepts</p>
-                <div class="price">Rs. 4,000 <span style="font-size: 14px;">/mo</span></div>
-                <div class="old-price">Rs. 5,700</div>
+            <div class="pricing-card popular">
+                <h3>Standard Hybrid Tier</h3>
+                <div class="discount-note">Most Popular Choice</div>
+                <div class="price">Rs. 4,500 <span>/month</span></div>
+                <p>3 Days / Week Sessions<br>Multi-Subject Coverage (Math, Science & English)<br>Weekly Progress Assessments</p>
             </div>
-            <div class="price-card popular">
-                <h3>Grades 9 - 10</h3>
-                <p>Matric & O-Level Board Prep</p>
-                <div class="price">Rs. 5,000 <span style="font-size: 14px;">/mo</span></div>
-                <div class="old-price">Rs. 7,100</div>
-            </div>
-            <div class="price-card">
-                <h3>Grades 11 - 12</h3>
-                <p>FSc, A-Level & C++ Coding</p>
-                <div class="price">Rs. 6,000 <span style="font-size: 14px;">/mo</span></div>
-                <div class="old-price">Rs. 8,500</div>
+            <div class="pricing-card">
+                <h3>Premium Complete Tier</h3>
+                <div class="discount-note">All-Inclusive Package</div>
+                <div class="price">Rs. 6,000 <span>/month</span></div>
+                <p>5 Days / Week Intensive Coaching<br>Includes Computer Science (C++) & Exam Prep<br>Direct Mentor Support</p>
             </div>
         </div>
     </section>
 
-    <!-- Application Form Section -->
-    <section id="apply">
-        <h2 class="section-title">Secure Your Spot</h2>
-        <p class="section-subtitle">Fill out the form below to claim your 30% discount and book a free trial class.</p>
-        
+    <!-- Registration Section -->
+    <section id="register">
+        <h2 class="section-title">Student Application Form</h2>
         <div class="form-container">
-            <form id="webApplicationForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentName">Student Name</label>
-                        <input type="text" id="studentName" required placeholder="Full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="parentName">Parent Name</label>
-                        <input type="text" id="parentName" placeholder="Parent name (if applicable)">
-                    </div>
+            <div id="successMessage" class="alert-success">Application submitted successfully! We will contact you soon.</div>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" required placeholder="Enter student's full name">
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp Number</label>
-                        <input type="tel" id="whatsapp" required placeholder="e.g. 03105497681">
-                    </div>
-                    <div class="form-group">
-                        <label for="grade">Grade Level</label>
-                        <select id="grade" required>
-                            <option value="" disabled selected>Select Grade</option>
-                            <option value="Grades 1-5">Grades 1 - 5 (Rs. 3,000)</option>
-                            <option value="Grades 5-8">Grades 5 - 8 (Rs. 4,000)</option>
-                            <option value="Grades 9-10">Grades 9 - 10 (Rs. 5,000)</option>
-                            <option value="Grades 11-12">Grades 11 - 12 (Rs. 6,000)</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="grade">Grade / Class</label>
+                    <select id="grade" required>
+                        <option value="">Select Grade (Grades 1–12)</option>
+                        <option value="Grade 1-5">Primary (Grades 1–5)</option>
+                        <option value="Grade 6-8">Middle (Grades 6–8)</option>
+                        <option value="Grade 9-10">Matric / O-Levels (Grades 9–10)</option>
+                        <option value="Grade 11-12">FSc / A-Levels (Grades 11–12)</option>
+                    </select>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="mode">Class Mode</label>
-                        <select id="mode" required>
-                            <option value="" disabled selected>Select Mode</option>
-                            <option value="Online">Online Session</option>
-                            <option value="Physical">Physical Class (Bhara Kahu)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject Focus</label>
-                        <select id="subject" required>
-                            <option value="" disabled selected>Select Subject</option>
-                            <option value="Science">Science</option>
-                            <option value="Math">Mathematics</option>
-                            <option value="Computer Science">Computer Science (C++)</option>
-                            <option value="English">English</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="subject">Primary Subject Required</label>
+                    <select id="subject" required>
+                        <option value="">Select Subject</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Sciences">Sciences (Physics/Chemistry/Biology)</option>
+                        <option value="Computer Science (C++)">Computer Science (C++)</option>
+                        <option value="English">English</option>
+                        <option value="All Subjects Package">All Subjects Package</option>
+                    </select>
                 </div>
-
-                <button type="submit" class="submit-btn">Submit Application</button>
+                <div class="form-group">
+                    <label for="mode">Mode of Classes</label>
+                    <select id="mode" required>
+                        <option value="Physical (Bhara Kahu)">Physical Classes (Bhara Kahu, Islamabad)</option>
+                        <option value="Online">Online Classes</option>
+                        <option value="Hybrid">Hybrid (Both)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber">Parent / WhatsApp Contact Number</label>
+                    <input type="tel" id="contactNumber" required placeholder="03XXXXXXXXX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Registration</button>
             </form>
-            <div id="successMsg" style="display:none; text-align:center; color:#10b981; font-weight:bold; margin-top:20px;">
-                🎉 Application Received Successfully! We will reach out on WhatsApp shortly.
-            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 NextGen Tutors. Based in Bhara Kahu, Islamabad. All rights reserved.</p>
+        <p>&copy; 2026 NextGen Tutors. All rights reserved.</p>
+        <p>Bhara Kahu, Islamabad, Pakistan | Dedicated to Academic Excellence</p>
     </footer>
 
-    <script>
-        const appForm = document.getElementById('webApplicationForm');
-        const successMsg = document.getElementById('successMsg');
+    <!-- Firebase SDK & Database Integration Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-        appForm.addEventListener('submit', function(e) {
+        const firebaseConfig = {
+            apiKey: "AIzaSyDId0czE2xNcSejfbVfCsBeMQmyruN4ORE",
+            authDomain: "next-gen-tutors.firebaseapp.com",
+            projectId: "next-gen-tutors",
+            storageBucket: "next-gen-tutors.firebasestorage.app",
+            messagingSenderId: "873430610856",
+            appId: "1:873430610856:web:cf1f8c7c45d2f06609239d",
+            measurementId: "G-9LM1M3V1GJ"
+        };
+
+        // Initialize Firebase & Firestore
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Handle Form Submission
+        const form = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // Ready to link database here
-            appForm.style.display = 'none';
-            successMsg.style.display = 'block';
+
+            const studentName = document.getElementById('studentName').value;
+            const grade = document.getElementById('grade').value;
+            const subject = document.getElementById('subject').value;
+            const mode = document.getElementById('mode').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+
+            try {
+                // Add data to Firestore 'registrations' collection
+                await addDoc(collection(db, "registrations"), {
+                    studentName: studentName,
+                    grade: grade,
+                    subject: subject,
+                    mode: mode,
+                    contactNumber: contactNumber,
+                    createdAt: new Date().toISOString()
+                });
+
+                // Show success message and reset form
+                successMessage.style.display = 'block';
+                form.reset();
+
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("Error submitting form. Please try again.");
+            }
         });
     </script>
 </body>
