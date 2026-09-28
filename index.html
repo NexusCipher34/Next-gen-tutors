@@ -312,27 +312,31 @@
                     <label for="studentName">Student Name</label>
                     <input type="text" id="studentName" required placeholder="Enter student's full name">
                 </div>
+
                 <div class="form-group">
                     <label for="grade">Grade / Class</label>
-                    <select id="grade" required>
+                    <select id="grade" required onchange="handleGradeChange()">
                         <option value="">Select Grade</option>
-                        <option value="Grade 1-5">Primary (Grades 1–5)</option>
-                        <option value="Grade 6-8">Middle (Grades 6–8)</option>
+                        <option value="Grade 1-8">Primary / Middle (Grades 1–8)</option>
                         <option value="Grade 9-10">Matric / O-Levels (Grades 9–10)</option>
                         <option value="Grade 11-12">FSc / A-Levels (Grades 11–12)</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="subject">Primary Subject Required</label>
-                    <select id="subject" required>
-                        <option value="">Select Subject</option>
-                        <option value="Mathematics">Mathematics</option>
-                        <option value="Sciences">Sciences</option>
-                        <option value="Computer Science Fundamentals">Computer Science Fundamentals</option>
-                        <option value="English">English</option>
-                        <option value="All Subjects Package">All Subjects Package</option>
+
+                <!-- Dynamic Subject Section -->
+                <div class="form-group" id="subjectGroup" style="display: none;">
+                    <label id="subjectLabel" for="subjectSelect">Subject Selection</label>
+                    <select id="subjectSelect" onchange="handleSubjectSubSelection()">
+                        <option value="">Select Option</option>
                     </select>
                 </div>
+
+                <!-- Manual Subject Input Field (Hidden by default) -->
+                <div class="form-group" id="manualSubjectGroup" style="display: none;">
+                    <label for="manualSubject">Enter Required Subjects Manually</label>
+                    <input type="text" id="manualSubject" placeholder="e.g. Physics, Math, Chemistry">
+                </div>
+
                 <div class="form-group">
                     <label for="mode">Mode of Classes</label>
                     <select id="mode" required>
@@ -341,10 +345,12 @@
                         <option value="Hybrid">Hybrid (Both)</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="contactNumber">Parent / WhatsApp Contact Number (11 Digits)</label>
                     <input type="tel" id="contactNumber" required maxlength="11" placeholder="03XXXXXXXXX">
                 </div>
+
                 <button type="submit" id="submitBtn" class="btn" style="width: 100%; padding: 1rem; font-size: 1.05rem;">Submit Registration</button>
             </form>
         </div>
@@ -355,7 +361,7 @@
         <p>Bhara Kahu, Islamabad, Pakistan</p>
     </footer>
 
-    <!-- Firebase App & Firestore via CDN Scripts -->
+    <!-- Firebase SDK & Dynamic Form Script -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
@@ -373,6 +379,60 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        function handleGradeChange() {
+            const grade = document.getElementById('grade').value;
+            const subjectGroup = document.getElementById('subjectGroup');
+            const subjectLabel = document.getElementById('subjectLabel');
+            const subjectSelect = document.getElementById('subjectSelect');
+            const manualGroup = document.getElementById('manualSubjectGroup');
+
+            subjectSelect.innerHTML = '<option value="">Select Option</option>';
+            manualGroup.style.display = 'none';
+
+            if (!grade) {
+                subjectGroup.style.display = 'none';
+                return;
+            }
+
+            subjectGroup.style.display = 'block';
+
+            if (grade === 'Grade 1-8') {
+                subjectLabel.textContent = "Select Study Package / Option (Grades 1–8)";
+                subjectSelect.innerHTML += `
+                    <option value="Manual">I want to study some specific subjects (Enter manually)</option>
+                    <option value="All Subjects Package">All Subjects Package</option>
+                `;
+            } else if (grade === 'Grade 9-10') {
+                subjectLabel.textContent = "Select Academic Stream (Grades 9–10)";
+                subjectSelect.innerHTML += `
+                    <option value="Science">Science Group</option>
+                    <option value="Arts">Arts Group</option>
+                `;
+            } else if (grade === 'Grade 11-12') {
+                subjectLabel.textContent = "Select Primary Subject Package (Grades 11–12)";
+                subjectSelect.innerHTML += `
+                    <option value="Pre-Medical / Science">Pre-Medical / Science</option>
+                    <option value="Pre-Engineering / Mathematics">Pre-Engineering / Mathematics</option>
+                    <option value="Computer Science / IT">Computer Science / IT</option>
+                    <option value="All Subjects Package">All Subjects Package</option>
+                `;
+            }
+        }
+
+        function handleSubjectSubSelection() {
+            const grade = document.getElementById('grade').value;
+            const subSelection = document.getElementById('subjectSelect').value;
+            const manualGroup = document.getElementById('manualSubjectGroup');
+
+            if (grade === 'Grade 1-8' && subSelection === 'Manual') {
+                manualGroup.style.display = 'block';
+            } else if (grade === 'Grade 9-10' && (subSelection === 'Science' || subSelection === 'Arts')) {
+                manualGroup.style.display = 'block';
+            } else {
+                manualGroup.style.display = 'none';
+            }
+        }
+
         const form = document.getElementById('registrationForm');
         const successMessage = document.getElementById('successMessage');
 
@@ -388,13 +448,19 @@
 
             const studentName = document.getElementById('studentName').value;
             const grade = document.getElementById('grade').value;
-            const subject = document.getElementById('subject').value;
             const mode = document.getElementById('mode').value;
+            
+            let finalSubject = document.getElementById('subjectSelect').value;
+            const manualVal = document.getElementById('manualSubject').value.trim();
+
+            if (manualVal !== '' && document.getElementById('manualSubjectGroup').style.display === 'block') {
+                finalSubject = finalSubject + " (Manual Entry: " + manualVal + ")";
+            }
 
             db.collection("registrations").add({
                 studentName: studentName,
                 grade: grade,
-                subject: subject,
+                subject: finalSubject,
                 mode: mode,
                 contactNumber: contactNumber,
                 createdAt: new Date().toISOString()
@@ -402,6 +468,8 @@
             .then(() => {
                 successMessage.style.display = 'block';
                 form.reset();
+                document.getElementById('subjectGroup').style.display = 'none';
+                document.getElementById('manualSubjectGroup').style.display = 'none';
                 setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 6000);
