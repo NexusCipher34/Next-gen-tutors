@@ -437,10 +437,9 @@
             padding: 4rem 5%;
         }
 
-        /* Login Screen Modal/Container inside admin section if not logged in */
         #adminLoginScreen {
             max-width: 500px;
-            margin: 6rem auto;
+            margin: 2rem auto 6rem auto;
             background: white;
             padding: 3rem;
             border-radius: 24px;
@@ -461,7 +460,7 @@
         </nav>
     </header>
 
-    <!-- WEBSITE MAIN CONTENT (Hidden when Admin Page is Active) -->
+    <!-- WEBSITE MAIN CONTENT -->
     <div id="websiteContent">
         <section class="hero">
             <div class="badge-gold">✨ SPECIAL OFFER: FREE QURAN & TAJWEED FOR FIRST 3 STUDENTS</div>
@@ -625,7 +624,7 @@
     <div id="adminSection">
         <div style="max-width: 1300px; margin: 0 auto; padding: 0 5%;">
             
-            <!-- Login View -->
+            <!-- Login View (Shown if NOT logged in) -->
             <div id="adminLoginScreen">
                 <h2 style="margin-bottom: 0.5rem; color: var(--dark);">Admin Portal Login</h2>
                 <p style="color: var(--gray); margin-bottom: 1.5rem; font-size: 0.95rem;">Enter your Firebase admin credentials to access student pipelines.</p>
@@ -641,7 +640,7 @@
                 <button class="filter-btn" onclick="returnToWebsite()" style="width: 100%; text-align: center;">← Back to Website</button>
             </div>
 
-            <!-- Dashboard View -->
+            <!-- Dashboard View (Shown ONLY if logged in) -->
             <div id="adminDashboardScreen" style="display: none;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
                     <div>
@@ -822,7 +821,7 @@
                 subject: finalSubject,
                 mode: mode,
                 contactNumber: contactNumber,
-                status: "Pending", // Default pipeline status
+                status: "Pending",
                 createdAt: new Date().toISOString()
             })
             .then(() => {
@@ -840,24 +839,26 @@
             });
         });
 
-        // --- Full Page Admin Portal Navigation & Logic ---
+        // --- Secured Admin Navigation & Logic ---
         function switchToAdminPage() {
             document.getElementById('websiteContent').style.display = 'none';
             document.getElementById('mainHeader').style.display = 'none';
             document.getElementById('adminSection').style.display = 'block';
             window.scrollTo(0, 0);
 
-            // Check Firebase Auth state
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    document.getElementById('adminLoginScreen').style.display = 'none';
-                    document.getElementById('adminDashboardScreen').style.display = 'block';
-                    fetchAdminRegistrations();
-                } else {
-                    document.getElementById('adminLoginScreen').style.display = 'block';
-                    document.getElementById('adminDashboardScreen').style.display = 'none';
-                }
-            });
+            // Strictly check if user is already authenticated via Firebase Auth
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                document.getElementById('adminLoginScreen').style.display = 'none';
+                document.getElementById('adminDashboardScreen').style.display = 'block';
+                fetchAdminRegistrations();
+            } else {
+                // Force user to see login screen if not logged in
+                document.getElementById('adminLoginScreen').style.display = 'block';
+                document.getElementById('adminDashboardScreen').style.display = 'none';
+                document.getElementById('adminEmailInput').value = '';
+                document.getElementById('adminPasswordInput').value = '';
+            }
         }
 
         function returnToWebsite() {
@@ -924,7 +925,6 @@
         function filterTable(statusFilter, btnElement) {
             currentFilter = statusFilter;
             
-            // Update button active state
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             if(btnElement) btnElement.classList.add('active');
 
@@ -986,7 +986,6 @@
             db.collection("registrations").doc(docId).update({
                 status: newStatus
             }).then(() => {
-                // Update local cache and refresh metrics
                 const target = allRegistrationsCache.find(item => item.id === docId);
                 if(target) target.status = newStatus;
                 updateDashboardStats();
