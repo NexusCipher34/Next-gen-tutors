@@ -1,706 +1,781 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Tutors | Expert Online & Physical Tutoring in Bhara Kahu, Islamabad</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>NextGen Tutors | Premier Hybrid & On-Site Tutoring in Bhara Kahu, Islamabad</title>
+    <!-- Open Graph SEO Meta Tags -->
+    <meta property="og:title" content="NextGen Tutors | Bhara Kahu, Islamabad">
+    <meta property="og:description" content="Empowering students with expert 6-day mentorship, hybrid learning, and personalized Federal Board coaching in Bhara Kahu, Islamabad.">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0F172A',
+                            blue: '#1E3A8A',
+                            accent: '#10B981', /* Emerald */
+                            warning: '#F59E0B',
+                            light: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --accent: #f97316;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            margin-left: 2rem;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .admin-link {
-            color: var(--gray) !important;
-            font-size: 0.9rem;
-            border-left: 1px solid #cbd5e1;
-            padding-left: 1.5rem;
-            cursor: pointer;
-        }
-
-        .admin-link:hover {
-            color: var(--primary) !important;
-        }
-
-        .hero {
-            position: relative;
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            color: white;
-            padding: 12rem 5% 8rem 5%;
-            text-align: center;
-        }
-
-        .badge-gold {
-            background: #f59e0b;
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-        }
-
-        .hero h1 {
-            font-size: 3.25rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
-            color: #cbd5e1;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            padding: 0.9rem 2.25rem;
-            border-radius: 10px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-danger {
-            background: var(--danger);
-        }
-        .btn-danger:hover {
-            background: #dc2626;
-        }
-
-        section {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 3.5rem;
-            color: var(--dark);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
-            border: 1px solid #e2e8f0;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.12);
-            border-color: #cbd5e1;
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.25rem;
-            display: inline-block;
-        }
-
-        .card h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.85rem;
-        }
-
-        .card p {
-            color: var(--gray);
-            font-size: 0.975rem;
-            line-height: 1.6;
-        }
-
-        .pricing-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-
-        .pricing-card.popular {
-            border-color: var(--primary);
-            background: linear-gradient(to bottom, #ffffff, #f0fdf4);
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-around;
-            margin: 1.5rem 0;
-            padding: 1rem 0;
-            border-top: 1px dashed #e2e8f0;
-            border-bottom: 1px dashed #e2e8f0;
-        }
-
-        .price-box h4 {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 0.2rem;
-            text-transform: uppercase;
-        }
-
-        .price-box .amount {
-            font-size: 1.85rem;
-            font-weight: 800;
-            color: var(--dark);
-        }
-
-        .price-box .amount span {
-            font-size: 0.85rem;
-            color: var(--gray);
-            font-weight: 400;
-        }
-
-        .discount-badge {
-            background: #dcfce7;
-            color: #166534;
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-top: 1.5rem;
-            color: var(--gray);
-            text-align: left;
-        }
-
-        .features-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .promo-banner {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 4rem;
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
-        }
-
-        .promo-banner h3 {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-            color: #fef08a;
-        }
-
-        .form-container {
-            background: white;
-            padding: 3.5rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.06);
-            max-width: 700px;
-            margin: 0 auto;
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-group {
-            margin-bottom: 1.75rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            outline: none;
-            background: #f8fafc;
-        }
-
-        .alert-success {
-            display: none;
-            background: #dcfce7;
-            color: #166534;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        /* Full Page Admin Section */
-        #adminSection {
-            display: none;
-            padding-top: 8rem;
-            min-height: 100vh;
-            background: #f1f5f9;
-        }
-
-        .admin-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-
-        .stat-card h4 {
-            color: var(--gray);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--dark);
-        }
-
-        .admin-controls-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #e2e8f0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--gray);
-            transition: all 0.2s;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.95rem;
-        }
-
-        th, td {
-            padding: 1rem 1.25rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        th {
-            background: #f8fafc;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .status-badge {
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            display: inline-block;
-        }
-
-        .status-pending { background: #fef3c7; color: #92400e; }
-        .status-enrolled { background: #dcfce7; color: #166534; }
-        .status-not-interested { background: #fee2e2; color: #991b1b; }
-
-        footer {
-            background: var(--dark);
-            color: #94a3b8;
-            text-align: center;
-            padding: 4rem 5%;
-        }
-
-        #adminLoginScreen {
-            max-width: 500px;
-            margin: 2rem auto 6rem auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            border: 1px solid #e2e8f0;
+        body { font-family: 'Inter', sans-serif; }
+        .hero-pattern {
+            background-color: #0F172A;
+            background-image: radial-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
 
-    <header id="mainHeader">
-        <a href="#" class="logo">NextGen Tutors</a>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#register" class="btn" style="padding: 0.5rem 1.25rem; color: white;">Register Now</a>
-            <a class="admin-link" onclick="switchToAdminPage()">For Admin Use</a>
-        </nav>
-    </header>
+    <!-- Sticky Navigation Bar -->
+    <nav id="mainHeader" class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                    <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-emerald-400 bg-clip-text text-transparent">NextGen Tutors</span>
+                    <span class="block text-xs text-emerald-400 font-medium tracking-wide">Bhara Kahu, Islamabad</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#features" class="hover:text-emerald-400 transition-colors">Why Us</a>
+                <a href="#faculty" class="hover:text-emerald-400 transition-colors">Expert Faculty</a>
+                <a href="#pricing" class="hover:text-emerald-400 transition-colors">Packages</a>
+                <a href="#testimonials" class="hover:text-emerald-400 transition-colors">Success Stories</a>
+                <a href="#faq" class="hover:text-emerald-400 transition-colors">FAQ</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <a href="#register" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm shadow-lg shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-rocket mr-2"></i> Register Now
+                </a>
+                <a onclick="switchToAdminPage()" class="text-xs text-slate-400 hover:text-emerald-400 cursor-pointer border-l border-slate-700 pl-4 transition-colors">Admin Portal</a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#features" class="block text-slate-300 hover:text-emerald-400 py-1">Why Us</a>
+            <a href="#faculty" class="block text-slate-300 hover:text-emerald-400 py-1">Expert Faculty</a>
+            <a href="#pricing" class="block text-slate-300 hover:text-emerald-400 py-1">Packages</a>
+            <a href="#testimonials" class="block text-slate-300 hover:text-emerald-400 py-1">Success Stories</a>
+            <a href="#faq" class="block text-slate-300 hover:text-emerald-400 py-1">FAQ</a>
+            <a href="#register" class="block text-center w-full mt-2 py-2.5 rounded-xl bg-emerald-500 text-white font-semibold">Register Now</a>
+        </div>
+    </nav>
 
     <!-- WEBSITE MAIN CONTENT -->
     <div id="websiteContent">
-        <section class="hero">
-            <div class="badge-gold">✨ SPECIAL OFFER: FREE QURAN & TAJWEED FOR FIRST 3 STUDENTS</div>
-            <h1>Master Your Future with NextGen Tutors</h1>
-            <p>Expert Online & Physical tutoring in Bhara Kahu, Islamabad for Science, Math, Computer Science, and Federal Board Curriculum (Grades 1–12).</p>
-            <a href="#register" class="btn">Book Free Trial Class</a>
-        </section>
+        <!-- Hero Section -->
+        <header class="hero-pattern pt-32 pb-24 lg:pt-40 lg:pb-32 text-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10B981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Now Enrolling for New Academic Session • Bhara Kahu</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                            Shape Your Child’s Future With <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Elite Mentorship</span>
+                        </h1>
+                        <p class="text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Pakistan’s premier hybrid tutoring platform right in the heart of Bhara Kahu, Islamabad. Offering intensive 6-day mentorship, concept clarity, and budget-friendly Federal Board exam preparation.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#register" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base shadow-xl shadow-emerald-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center">
+                                <span>Book Free Trial Class</span>
+                                <i class="fa-solid fa-arrow-right ml-2.5"></i>
+                            </a>
+                            <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-base transition-all flex items-center justify-center">
+                                <i class="fa-solid fa-tags mr-2.5 text-emerald-400"></i> View Packages
+                            </a>
+                        </div>
+                        <!-- Quick Trust Metrics -->
+                        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-white">98%</p>
+                                <p class="text-xs text-slate-400 font-medium">Exam Success Rate</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-white">6 Days</p>
+                                <p class="text-xs text-slate-400 font-medium">Weekly Mentorship</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-white">100+</p>
+                                <p class="text-xs text-slate-400 font-medium">Local Students</p>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Why Choose Us Section -->
-        <section id="about">
-            <h2 class="section-title">Why Choose NextGen Tutors?</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">🏛️</div>
-                    <h3>Hybrid & Local Flexibility</h3>
-                    <p>Choose between structured physical classes right here in Bhara Kahu or budget-friendly, high-definition interactive online sessions from home.</p>
+                    <!-- Hero Visual / Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-slate-800/80 border border-slate-700/80 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative">
+                            <div class="absolute -top-3 -right-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                                ⭐ Top Rated in Islamabad
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Why Parents Trust Us</h3>
+                            <p class="text-sm text-slate-300 mb-6">Designed specifically for Federal Board, Matric, FSc, and Junior Grades.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3 p-3.5 rounded-2xl bg-slate-900/60 border border-slate-700/50">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-laptop-code text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Hybrid Flexibility</h4>
+                                        <p class="text-xs text-slate-400">Seamless transition between state-of-the-art physical classes in Bhara Kahu and live interactive online sessions.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-3 p-3.5 rounded-2xl bg-slate-900/60 border border-slate-700/50">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-user-graduate text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Expert Faculty</h4>
+                                        <p class="text-xs text-slate-400">Highly qualified instructors holding Master's degrees (MA) with extensive Federal Board teaching expertise.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-3 p-3.5 rounded-2xl bg-slate-900/60 border border-slate-700/50">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-shield-halved text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Guaranteed Progress</h4>
+                                        <p class="text-xs text-slate-400">Weekly tests, individual feedback sessions, and customized parent-teacher WhatsApp progress updates.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-slate-700 flex items-center justify-between text-xs text-slate-400">
+                                <span>📍 Location: Main Murree Road, Bhara Kahu</span>
+                                <a href="https://wa.me/923005324209" target="_blank" class="text-emerald-400 font-semibold hover:underline flex items-center">
+                                    <i class="fa-brands fa-whatsapp mr-1 text-base"></i> Chat on WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-icon">🔬</div>
-                    <h3>Core STEM & Board Focus</h3>
-                    <p>Specialized instruction tailored for Matric, FSc, and foundational sciences, building deep analytical thinking and exam confidence.</p>
+            </div>
+        </header>
+
+        <!-- Features / Why Choose Us -->
+        <section id="features" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">The NextGen Advantage</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Excellence in Every Lesson</h2>
+                    <p class="text-slate-600 mt-4 text-base">We combine traditional academic rigor with modern technological tools to ensure your child stays ahead of the curve.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">📅</div>
-                    <h3>Consistent 6-Day Mentorship</h3>
-                    <p>Intensive 6-days-a-week study schedules ensuring active homework tracking, regular concept checks, and guaranteed academic progress.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">6-Day Intensive Mentorship</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Consistent daily engagement ensures concepts are deeply rooted. No more cramming right before exams.</p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-house-laptop"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Hybrid & On-Site Learning</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Choose between safe, well-equipped physical classrooms in Bhara Kahu or comfortable interactive online tutorials.</p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Weekly Progress Reports</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Detailed assessment reports sent straight to parents via WhatsApp so you are never left guessing about performance.</p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Federal Board Curriculum Focus</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Specialized curriculum alignment and exam pattern training exclusively tailored for FBISE examinations.</p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Small Batch Sizes</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Strict student-to-teacher ratio limits to guarantee individual attention and prompt doubt clearing.</p>
+                    </div>
+
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Affordable Investment</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Top-tier elite education made accessible for local families in Bhara Kahu with budget-friendly monthly plans.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="pricing" style="background: #f1f5f9;">
-            <h2 class="section-title">Transparent Pricing & Special Offers</h2>
-
-            <div class="promo-banner">
-                <h3>🌟 First 3 Registrations Bonus!</h3>
-                <p>Get a completely <strong>FREE 30-minute online Quran Studies & Tajweed lecture</strong> every Friday, Saturday, and Sunday!</p>
-            </div>
-
-            <div class="grid">
-                <!-- Grades 1-8 -->
-                <div class="pricing-card">
-                    <h3>Grades 1–8 (Primary/Middle)</h3>
-                    <div class="discount-badge">Flexible Per Subject or All Subjects</div>
-                    <div class="price-row">
-                        <div class="price-box">
-                            <h4>Physical</h4>
-                            <div class="amount">Rs. 4,000 <span>/mo</span></div>
-                        </div>
-                        <div class="price-box" style="border-left: 1px dashed #e2e8f0; padding-left: 1rem;">
-                            <h4>Online</h4>
-                            <div class="amount" style="color: var(--success);">Rs. 3,000 <span>/mo</span></div>
-                        </div>
-                    </div>
-                    <ul class="features-list">
-                        <li>✅ <strong>6 Days / Week</strong> Support</li>
-                        <li>✅ Manual Subject Selection or All-Inclusive Package</li>
-                        <li>✅ Daily Homework Help</li>
-                    </ul>
-                </div>
-                
-                <!-- Grades 9-10 -->
-                <div class="pricing-card popular">
-                    <h3>Grades 9–10 (Matric Group)</h3>
-                    <div class="discount-badge">⭐ Most Popular Stream Package</div>
-                    <div class="price-row">
-                        <div class="price-box">
-                            <h4>Physical</h4>
-                            <div class="amount">Rs. 5000 <span>/mo</span></div>
-                        </div>
-                        <div class="price-box" style="border-left: 1px dashed #e2e8f0; padding-left: 1rem;">
-                            <h4>Online</h4>
-                            <div class="amount" style="color: var(--success);">Rs. 3,000 <span>/mo</span></div>
-                        </div>
-                    </div>
-                    <ul class="features-list">
-                        <li>✅ <strong>6 Days / Week</strong> Active Sessions</li>
-                        <li>✅ Science or Arts Group Customization</li>
-                        <li>✅ Progress Assessments & Board Exam Prep</li>
-                    </ul>
+        <!-- Faculty Qualifications Section -->
+        <section id="faculty" class="py-24 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                    <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">Expert Faculty</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Taught by Islamabad’s Finest Educators</h2>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        At NextGen Tutors, all our lead instructors maintain a minimum qualification of <strong>MA (Master of Arts)</strong> or specialized degrees with proven Federal Board coaching excellence. We prioritize deep conceptual understanding, regular practice, and personalized student mentorship.
+                    </p>
                 </div>
 
-                <!-- Grades 11-12 -->
-                <div class="pricing-card">
-                    <h3>FSc (Grades 11–12)</h3>
-                    <div class="discount-badge">🎁 Advanced Coaching Tier</div>
-                    <div class="price-row">
-                        <div class="price-box">
-                            <h4>Physical</h4>
-                            <div class="amount">Rs. 6,000 <span>/mo</span></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-slate-800/80 border border-slate-700/80 p-8 rounded-3xl shadow-xl flex items-start space-x-5">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl font-bold flex-shrink-0">
+                            🎓
                         </div>
-                        <div class="price-box" style="border-left: 1px dashed #e2e8f0; padding-left: 1rem;">
-                            <h4>Online</h4>
-                            <div class="amount" style="color: var(--success);">Rs. 4,000 <span>/mo</span></div>
+                        <div class="space-y-2">
+                            <span class="inline-block bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">Highest Qualification: MA</span>
+                            <h3 class="text-xl font-bold text-white">Master’s Degree Faculty</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">Our faculty members hold advanced MA degrees and extensive years of teaching experience, specializing in simplifying complex concepts for Matric and FSc students.</p>
                         </div>
                     </div>
-                    <ul class="features-list">
-                        <li>✅ <strong>6 Days / Week</strong> Full Coaching</li>
-                        <li>✅ Pre-Medical, Pre-Engineering & Computer Science</li>
-                        <li>✅ Priority Slot Booking & Doubt Clearing</li>
-                    </ul>
+
+                    <div class="bg-slate-800/80 border border-slate-700/80 p-8 rounded-3xl shadow-xl flex items-start space-x-5">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-3xl font-bold flex-shrink-0">
+                            📚
+                        </div>
+                        <div class="space-y-2">
+                            <span class="inline-block bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">FBISE Curriculum Experts</span>
+                            <h3 class="text-xl font-bold text-white">Board Exam Specialists</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">Rigorous training focused directly on Federal Board examination patterns, marking schemes, and past paper problem-solving strategies.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="register">
-            <h2 class="section-title">Student Application Form</h2>
-            <div class="form-container">
-                <div id="successMessage" class="alert-success">You have been registered. Our team will text you soon!</div>
-                
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="studentName">Student Name</label>
-                        <input type="text" id="studentName" required placeholder="Enter student's full name">
+        <!-- Pricing / Packages Section -->
+        <section id="pricing" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Transparent Investment</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Choose the Perfect Stream Package</h2>
+                    <p class="text-slate-600 mt-4 text-base">Affordable monthly mentorship tiers tailored for online and offline options in Bhara Kahu.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <!-- Junior Stream -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Grades 1 to 8</span>
+                                <i class="fa-solid fa-seedling text-emerald-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-slate-900">Junior Foundation</h3>
+                            <p class="text-slate-500 text-sm mt-1">Strong basics in Math, Science, English, and Urdu.</p>
+                            
+                            <div class="mt-6 mb-8 space-y-2">
+                                <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Online Option</span>
+                                    <span class="text-2xl font-extrabold text-emerald-600">Rs. 2,000 <span class="text-xs font-normal text-slate-500">/mo</span></span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Offline Option</span>
+                                    <span class="text-2xl font-extrabold text-slate-900">Rs. 3,000 <span class="text-xs font-normal text-slate-500">/mo</span></span>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-600 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> 6 Days Weekly Mentorship</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Homework & Assignment Support</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Reading & Pronunciation drills</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Weekly WhatsApp Parent Update</li>
+                            </ul>
+                        </div>
+
+                        <a href="#register" class="w-full py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-center transition-colors">
+                            Enroll in Junior Stream
+                        </a>
                     </div>
 
-                    <div class="form-group">
-                        <label for="grade">Grade / Class</label>
-                        <select id="grade" required onchange="handleGradeChange()">
-                            <option value="">Select Grade</option>
-                            <option value="Grade 1-8">Primary / Middle (Grades 1–8)</option>
-                            <option value="Grade 9-10">Matric (Grades 9–10)</option>
-                            <option value="Grade 11-12">FSc (Grades 11–12)</option>
-                        </select>
+                    <!-- Most Popular Stream (Grades 9-10) -->
+                    <div class="bg-slate-900 text-white rounded-3xl p-8 border-2 border-emerald-500 shadow-2xl relative flex flex-col justify-between transform lg:-translate-y-2">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-teal-400 text-white text-xs font-extrabold px-4 py-1.5 rounded-full shadow-lg tracking-wide uppercase">
+                            🔥 Most Popular Stream
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-4 mt-2">
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-500/30">Grades 9 & 10</span>
+                                <i class="fa-solid fa-fire text-emerald-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-white">Matric Group Stream</h3>
+                            <p class="text-slate-300 text-sm mt-1">Intensive board exam prep, past paper practice & concept mastery.</p>
+                            
+                            <div class="mt-6 mb-8 space-y-2">
+                                <div class="flex justify-between items-center bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                                    <span class="text-xs font-bold text-emerald-400 uppercase">Online Option</span>
+                                    <span class="text-2xl font-extrabold text-emerald-400">Rs. 3,000 <span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                                    <span class="text-xs font-bold text-slate-300 uppercase">Offline Option</span>
+                                    <span class="text-2xl font-extrabold text-white">Rs. 4,000 <span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> All Science & Arts Subjects Covered</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> 6-Day Comprehensive Mentorship</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> FBISE Past Paper Drills</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Dedicated Doubt Clearing Sessions</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i> Bi-weekly Mock Board Exams</li>
+                            </ul>
+                        </div>
+
+                        <a href="#register" class="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-center shadow-lg shadow-emerald-500/30 transition-all">
+                            Secure Most Popular Spot
+                        </a>
                     </div>
 
-                    <!-- Dynamic Subject Section -->
-                    <div class="form-group" id="subjectGroup" style="display: none;">
-                        <label id="subjectLabel" for="subjectSelect">Subject Selection</label>
-                        <select id="subjectSelect" onchange="handleSubjectSubSelection()">
-                            <option value="">Select Option</option>
-                        </select>
-                    </div>
+                    <!-- Senior Stream -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Grades 11 & 12</span>
+                                <i class="fa-solid fa-graduation-cap text-emerald-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-slate-900">FSc Stream</h3>
+                            <p class="text-slate-500 text-sm mt-1">Advanced pre-engineering, pre-medical & ICS coaching.</p>
+                            
+                            <div class="mt-6 mb-8 space-y-2">
+                                <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Online Option</span>
+                                    <span class="text-2xl font-extrabold text-emerald-600">Rs. 4,000 <span class="text-xs font-normal text-slate-500">/mo</span></span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Offline Option</span>
+                                    <span class="text-2xl font-extrabold text-slate-900">Rs. 5,000 <span class="text-xs font-normal text-slate-500">/mo</span></span>
+                                </div>
+                            </div>
 
-                    <!-- Manual Subject Input Field -->
-                    <div class="form-group" id="manualSubjectGroup" style="display: none;">
-                        <label for="manualSubject">Enter Required Subjects Manually</label>
-                        <input type="text" id="manualSubject" placeholder="e.g. Physics, Math, Chemistry">
-                    </div>
+                            <ul class="space-y-3.5 text-sm text-slate-600 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Specialized Subject Experts</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Entry Test (MDCAT/ECAT) Foundations</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Numerical & Analytical Problem Solving</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Individualized Career Counseling</li>
+                            </ul>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="mode">Mode of Classes</label>
-                        <select id="mode" required>
-                            <option value="Physical (Bhara Kahu)">Physical Classes (Bhara Kahu, Islamabad)</option>
-                            <option value="Online">Online Classes (Early Bird Discount)</option>
-                            <option value="Hybrid">Hybrid (Both)</option>
-                        </select>
+                        <a href="#register" class="w-full py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-center transition-colors">
+                            Enroll in Senior Stream
+                        </a>
                     </div>
-
-                    <div class="form-group">
-                        <label for="contactNumber">Parent / WhatsApp Contact Number (11 Digits)</label>
-                        <input type="tel" id="contactNumber" required maxlength="11" placeholder="03XXXXXXXXX">
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="btn" style="width: 100%; padding: 1rem; font-size: 1.05rem;">Submit Registration</button>
-                </form>
+                </div>
             </div>
         </section>
+
+        <!-- Testimonials Section (Floating / Carousel style cards) -->
+        <section id="testimonials" class="py-24 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Parent & Student Love</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Trusted by Families Across Bhara Kahu</h2>
+                    <p class="text-slate-600 mt-4 text-base">Hear how NextGen Tutors transformed academic confidence and grade outcomes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Floating Card 1 -->
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 shadow-lg hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-1 text-amber-500 mb-4 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                                "Finding good science teachers in Bhara Kahu used to be a hassle. NextGen Tutors has been a blessing. My son improved his Math score from 60% to 91% in just four months of 6-day mentorship!"
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-slate-200">
+                            <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">
+                                TB
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-900">Tariq Mahmood</h4>
+                                <p class="text-xs text-slate-500">Parent of Class 10 Student</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Card 2 -->
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 shadow-lg hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-1 text-amber-500 mb-4 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                                "The hybrid model is amazing. When traffic is blocked on Murree Road, I can easily take my physics and chemistry classes online without missing a beat. Highly recommended!"
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-slate-200">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm">
+                                AN
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-900">Ayesha Noor</h4>
+                                <p class="text-xs text-slate-500">FSc Pre-Medical Student</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Card 3 -->
+                    <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 shadow-lg hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-1 text-amber-500 mb-4 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                                "The weekly WhatsApp progress reports give me complete peace of mind as a working mother. I always know exactly what my daughter is studying and where she needs extra practice."
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-slate-200">
+                            <div class="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm">
+                                FK
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-900">Mrs. Farooq</h4>
+                                <p class="text-xs text-slate-500">Parent of Class 8 Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Got Questions?</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Frequently Asked Questions</h2>
+                    <p class="text-slate-600 mt-4 text-base">Everything you need to know about our classes, schedules, and faculty.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
+                        <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                            <span>Where exactly are the physical classes located in Bhara Kahu?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
+                            Our main campus is conveniently located on Main Murree Road, Bhara Kahu, Islamabad, easily accessible from all major residential societies with secure parking and comfortable air-conditioned classrooms.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
+                        <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                            <span>How does the hybrid option work if my child misses a physical class?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
+                            With our hybrid model, students can seamlessly switch to live online video sessions if they cannot travel to the campus, or access recorded doubt-clearing sessions so no student ever falls behind.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
+                        <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                            <span>What is included in the 6-day mentorship program?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
+                            Students attend structured mentoring 6 days a week. This includes core conceptual lectures, guided homework completion, weekly tests, and individual doubt-resolution sprints.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
+                        <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                            <span>How can parents track student attendance and test scores?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed">
+                            We send weekly progress updates directly to parents via WhatsApp, detailing attendance records, quiz grades, and constructive teacher feedback.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section & Form -->
+        <section id="register" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10B981_1px,transparent_1px)] [background-size:24px_24px]"></div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12">
+                    <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">Start Your Journey</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Book Your Free Trial Class Today</h2>
+                    <p class="text-slate-300 mt-2 text-base">Fill out the quick form below and our academic coordinator will get in touch via phone/WhatsApp within 2 hours.</p>
+                </div>
+
+                <div class="bg-slate-800/90 border border-slate-700/80 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-xl">
+                    <!-- Success State Feedback Banner -->
+                    <div id="form-success-alert" class="hidden mb-6 p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500 text-emerald-300 text-sm flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-check text-xl flex-shrink-0"></i>
+                        <div>
+                            <strong class="block font-bold">Registration Received Successfully!</strong>
+                            <span>Thank you! Our admission team in Bhara Kahu will reach out to you on WhatsApp shortly to confirm your free trial class timing.</span>
+                        </div>
+                    </div>
+
+                    <form id="registration-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Student Full Name *</label>
+                                <input type="text" id="student-name" required placeholder="e.g. Ali Khan" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Grade / Class *</label>
+                                <select id="student-grade" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm transition-colors">
+                                    <option value="" disabled selected>Select Grade Level</option>
+                                    <option value="Grades 1-5 (Junior)">Grades 1 to 5 (Junior)</option>
+                                    <option value="Grades 6-8 (Middle)">Grades 6 to 8 (Middle)</option>
+                                    <option value="Grades 9-10 (Matric)">Grades 9 & 10 (Matric Group) - ⭐ Most Popular</option>
+                                    <option value="Grades 11-12 (FSc)">Grades 11 & 12 (FSc Stream)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">WhatsApp Contact Number (11 Digits) *</label>
+                                <input type="tel" id="whatsapp-number" required maxlength="11" placeholder="03XXXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Preferred Learning Mode *</label>
+                                <select id="learning-mode" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm transition-colors">
+                                    <option value="" disabled selected>Select Mode</option>
+                                    <option value="Physical (Bhara Kahu Campus)">Physical Classes (Bhara Kahu Campus)</option>
+                                    <option value="Online Live Tutorials">Online Live Tutorials</option>
+                                    <option value="Hybrid (Both)">Hybrid (Both Physical & Online)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Additional Notes or Subjects (Optional)</label>
+                            <textarea id="student-notes" rows="3" placeholder="Mention any specific subjects like Mathematics, Physics, or specific timings..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base shadow-xl shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2 cursor-pointer">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Submit Registration & Claim Free Trial</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                    <div class="space-y-4 md:col-span-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </div>
+                            <span class="text-xl font-extrabold text-white tracking-tight">NextGen Tutors</span>
+                        </div>
+                        <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+                            Empowering students across Bhara Kahu, Islamabad with top-tier hybrid mentorship, 6-day weekly coaching, and rigorous Federal Board exam preparation.
+                        </p>
+                        <div class="flex items-center space-x-4 text-slate-400 text-lg">
+                            <a href="https://tiktok.com/@next.gentutorsofficial" target="_blank" class="hover:text-emerald-400 transition-colors" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="https://wa.me/923005324209" target="_blank" class="hover:text-emerald-400 transition-colors" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#features" class="hover:text-emerald-400 transition-colors">Why Choose Us</a></li>
+                            <li><a href="#faculty" class="hover:text-emerald-400 transition-colors">Expert Faculty</a></li>
+                            <li><a href="#pricing" class="hover:text-emerald-400 transition-colors">Stream Packages</a></li>
+                            <li><a href="#testimonials" class="hover:text-emerald-400 transition-colors">Success Stories</a></li>
+                            <li><a href="#faq" class="hover:text-emerald-400 transition-colors">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Contact Info</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-location-dot text-emerald-500 mt-1"></i>
+                                <span>Main Murree Road, Bhara Kahu, Islamabad</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-phone text-emerald-500"></i>
+                                <span>+92 300 5324209</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-envelope text-emerald-500"></i>
+                                <span>info@nextgentutors.edu.pk</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                    <p>&copy; 2026 NextGen Tutors, Bhara Kahu, Islamabad. All rights reserved.</p>
+                    <div class="mt-4 sm:mt-0 flex items-center space-x-4">
+                        <a onclick="switchToAdminPage()" class="text-slate-600 hover:text-emerald-400 transition-colors flex items-center space-x-1.5 cursor-pointer">
+                            <i class="fa-solid fa-lock text-xs"></i>
+                            <span>Admin Portal</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <!-- FULL ADMIN MANAGEMENT PAGE VIEW -->
-    <div id="adminSection">
-        <div style="max-width: 1300px; margin: 0 auto; padding: 0 5%;">
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/923005324209?text=Hello!%20I%20want%20to%20know%20more%20about%20NextGen%20Tutors%20classes." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition-transform hover:scale-110" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FULL ADMIN MANAGEMENT PAGE VIEW (FIREBASE CONNECTED) -->
+    <div id="adminSection" class="hidden min-h-screen bg-slate-950 text-white pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
             
-            <!-- Login View (Shown if NOT logged in) -->
-            <div id="adminLoginScreen">
-                <h2 style="margin-bottom: 0.5rem; color: var(--dark);">Admin Portal Login</h2>
-                <p style="color: var(--gray); margin-bottom: 1.5rem; font-size: 0.95rem;">Enter your Firebase admin credentials to access student pipelines.</p>
-                <div class="form-group">
-                    <label for="adminEmailInput">Admin Email</label>
-                    <input type="email" id="adminEmailInput" placeholder="admin@nextgentutors.com">
+            <!-- Login View -->
+            <div id="adminLoginScreen" class="max-w-md mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Admin Portal Login</h3>
+                    <p class="text-xs text-slate-400 mt-1">Enter your Firebase admin credentials</p>
                 </div>
-                <div class="form-group">
-                    <label for="adminPasswordInput">Password</label>
-                    <input type="password" id="adminPasswordInput" placeholder="Enter password">
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Admin Email</label>
+                        <input type="email" id="adminEmailInput" placeholder="admin@nextgentutors.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Password</label>
+                        <input type="password" id="adminPasswordInput" placeholder="Enter password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <button onclick="verifyAdminFirebaseLogin()" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg transition-all cursor-pointer">
+                        Access Dashboard
+                    </button>
+                    <button onclick="returnToWebsite()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-all cursor-pointer">
+                        ← Back to Website
+                    </button>
                 </div>
-                <button class="btn" onclick="verifyAdminFirebaseLogin()" style="width: 100%; margin-bottom: 1rem;">Access Dashboard</button>
-                <button class="filter-btn" onclick="returnToWebsite()" style="width: 100%; text-align: center;">← Back to Website</button>
             </div>
 
-            <!-- Dashboard View (Shown ONLY if logged in) -->
-            <div id="adminDashboardScreen" style="display: none;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <!-- Dashboard View -->
+            <div id="adminDashboardScreen" class="hidden space-y-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 border border-slate-800 p-6 rounded-2xl">
                     <div>
-                        <h2 style="color: var(--dark); font-size: 2rem;">Admin Management Dashboard</h2>
-                        <p style="color: var(--gray);">Track leads, review student applications, and manage enrollment pipeline.</p>
+                        <h2 class="text-2xl font-extrabold text-white">Admin Management Dashboard</h2>
+                        <p class="text-xs text-slate-400">Manage student applications and registration leads in real time.</p>
                     </div>
-                    <div style="display: flex; gap: 1rem;">
-                        <button class="filter-btn" onclick="returnToWebsite()">← View Live Site</button>
-                        <button class="btn btn-danger" style="padding: 0.5rem 1.25rem;" onclick="logoutAdmin()">Logout</button>
-                    </div>
-                </div>
-
-                <!-- Stats Counters -->
-                <div class="admin-stats-grid">
-                    <div class="stat-card">
-                        <h4>Total Leads</h4>
-                        <div class="stat-number" id="statTotal">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Enrolled</h4>
-                        <div class="stat-number" style="color: var(--success);" id="statEnrolled">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Pending Review</h4>
-                        <div class="stat-number" style="color: var(--warning);" id="statPending">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Not Interested</h4>
-                        <div class="stat-number" style="color: var(--danger);" id="statNotInterested">0</div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="returnToWebsite()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition-colors cursor-pointer">View Live Site</button>
+                        <button onclick="logoutAdmin()" class="px-4 py-2 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 text-xs font-semibold transition-colors cursor-pointer">Logout</button>
                     </div>
                 </div>
 
-                <!-- Filters & Controls Bar -->
-                <div class="admin-controls-bar">
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterTable('all', this)">All Leads</button>
-                        <button class="filter-btn" onclick="filterTable('Pending', this)">Pending Review</button>
-                        <button class="filter-btn" onclick="filterTable('Enrolled', this)">Enrolled</button>
-                        <button class="filter-btn" onclick="filterTable('Not Interested', this)">Not Interested</button>
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl text-center">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Total Leads</p>
+                        <p id="statTotal" class="text-3xl font-extrabold text-white mt-1">0</p>
                     </div>
-                    <div style="color: var(--gray); font-size: 0.9rem;" id="tableCountText">Showing all records</div>
+                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl text-center">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Enrolled</p>
+                        <p id="statEnrolled" class="text-3xl font-extrabold text-emerald-400 mt-1">0</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl text-center">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Pending Review</p>
+                        <p id="statPending" class="text-3xl font-extrabold text-amber-400 mt-1">0</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl text-center">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Not Interested</p>
+                        <p id="statNotInterested" class="text-3xl font-extrabold text-rose-400 mt-1">0</p>
+                    </div>
                 </div>
 
-                <!-- Data Table -->
-                <div class="table-responsive">
-                    <table>
-                        <thead>
+                <!-- Filters Bar -->
+                <div class="flex flex-wrap justify-between items-center gap-4 bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterTable('all', this)" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white transition-all cursor-pointer">All Leads</button>
+                        <button onclick="filterTable('Pending', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all cursor-pointer">Pending Review</button>
+                        <button onclick="filterTable('Enrolled', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all cursor-pointer">Enrolled</button>
+                        <button onclick="filterTable('Not Interested', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all cursor-pointer">Not Interested</button>
+                    </div>
+                    <span id="tableCountText" class="text-xs text-slate-400">Showing 0 records</span>
+                </div>
+
+                <!-- Table View -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-x-auto shadow-xl">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
                             <tr>
-                                <th>Student Name</th>
-                                <th>Grade / Stream</th>
-                                <th>Subject / Package</th>
-                                <th>Mode</th>
-                                <th>Contact No</th>
-                                <th>Date</th>
-                                <th>Pipeline Status</th>
-                                <th>Action</th>
+                                <th class="p-4">Student Name</th>
+                                <th class="p-4">Grade / Level</th>
+                                <th class="p-4">Mode</th>
+                                <th class="p-4">Contact No</th>
+                                <th class="p-4">Date</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 text-center">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="adminTableBody">
-                            <!-- Populated dynamically -->
+                        <tbody id="adminTableBody" class="divide-y divide-slate-800">
+                            <tr>
+                                <td colspan="7" class="p-6 text-center text-slate-500">Loading records...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -709,17 +784,13 @@
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 NextGen Tutors. All rights reserved.</p>
-        <p>Bhara Kahu, Islamabad, Pakistan</p>
-    </footer>
-
-    <!-- Firebase SDK (Compat Version including Auth and Firestore) -->
+    <!-- Firebase SDK (Compat Version) -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
+        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDId0czE2xNcSejfbVfCsBeMQmyruN4ORE",
             authDomain: "next-gen-tutors.firebaseapp.com",
@@ -737,101 +808,58 @@
         let allRegistrationsCache = [];
         let currentFilter = 'all';
 
-        function handleGradeChange() {
-            const grade = document.getElementById('grade').value;
-            const subjectGroup = document.getElementById('subjectGroup');
-            const subjectLabel = document.getElementById('subjectLabel');
-            const subjectSelect = document.getElementById('subjectSelect');
-            const manualGroup = document.getElementById('manualSubjectGroup');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            subjectSelect.innerHTML = '<option value="">Select Option</option>';
-            manualGroup.style.display = 'none';
+        // FAQ Accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
 
-            if (!grade) {
-                subjectGroup.style.display = 'none';
-                return;
-            }
+        // Registration Form Submission Handler (Firebase Firestore)
+        const registrationForm = document.getElementById('registration-form');
+        const successAlert = document.getElementById('form-success-alert');
 
-            subjectGroup.style.display = 'block';
-
-            if (grade === 'Grade 1-8') {
-                subjectLabel.textContent = "Select Study Package / Option (Grades 1–8)";
-                subjectSelect.innerHTML += `
-                    <option value="Manual">I want to study some specific subjects (Enter manually)</option>
-                    <option value="All Subjects Package">All Subjects Package</option>
-                `;
-            } else if (grade === 'Grade 9-10') {
-                subjectLabel.textContent = "Select Academic Stream (Matric Grades 9–10)";
-                subjectSelect.innerHTML += `
-                    <option value="Science">Science Group</option>
-                    <option value="Arts">Arts Group</option>
-                `;
-            } else if (grade === 'Grade 11-12') {
-                subjectLabel.textContent = "Select Primary Subject Package (FSc)";
-                subjectSelect.innerHTML += `
-                    <option value="Pre-Medical / Science">Pre-Medical / Science</option>
-                    <option value="Pre-Engineering / Mathematics">Pre-Engineering / Mathematics</option>
-                    <option value="Computer Science / IT">Computer Science / IT</option>
-                    <option value="All Subjects Package">All Subjects Package</option>
-                `;
-            }
-        }
-
-        function handleSubjectSubSelection() {
-            const grade = document.getElementById('grade').value;
-            const subSelection = document.getElementById('subjectSelect').value;
-            const manualGroup = document.getElementById('manualSubjectGroup');
-
-            if (grade === 'Grade 1-8' && subSelection === 'Manual') {
-                manualGroup.style.display = 'block';
-            } else if (grade === 'Grade 9-10' && (subSelection === 'Science' || subSelection === 'Arts')) {
-                manualGroup.style.display = 'block';
-            } else {
-                manualGroup.style.display = 'none';
-            }
-        }
-
-        const form = document.getElementById('registrationForm');
-        const successMessage = document.getElementById('successMessage');
-
-        form.addEventListener('submit', function(e) {
+        registrationForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const contactNumber = document.getElementById('contactNumber').value.trim();
-
+            const contactNumber = document.getElementById('whatsapp-number').value.trim();
             if (contactNumber.length !== 11 || isNaN(contactNumber)) {
                 alert("Please enter a valid 11-digit mobile number (e.g., 03001234567).");
                 return;
             }
 
-            const studentName = document.getElementById('studentName').value;
-            const grade = document.getElementById('grade').value;
-            const mode = document.getElementById('mode').value;
-            
-            let finalSubject = document.getElementById('subjectSelect').value;
-            const manualVal = document.getElementById('manualSubject').value.trim();
-
-            if (manualVal !== '' && document.getElementById('manualSubjectGroup').style.display === 'block') {
-                finalSubject = finalSubject + " (Manual Entry: " + manualVal + ")";
-            }
+            const studentName = document.getElementById('student-name').value;
+            const studentGrade = document.getElementById('student-grade').value;
+            const learningMode = document.getElementById('learning-mode').value;
+            const studentNotes = document.getElementById('student-notes').value;
 
             db.collection("registrations").add({
                 studentName: studentName,
-                grade: grade,
-                subject: finalSubject,
-                mode: mode,
+                grade: studentGrade,
+                mode: learningMode,
+                notes: studentNotes,
                 contactNumber: contactNumber,
                 status: "Pending",
                 createdAt: new Date().toISOString()
             })
             .then(() => {
-                successMessage.style.display = 'block';
-                form.reset();
-                document.getElementById('subjectGroup').style.display = 'none';
-                document.getElementById('manualSubjectGroup').style.display = 'none';
+                successAlert.classList.remove('hidden');
+                registrationForm.reset();
+                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 6000);
+                    successAlert.classList.add('hidden');
+                }, 8000);
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
@@ -839,21 +867,19 @@
             });
         });
 
-        // --- Secured Admin Navigation & Logic ---
+        // --- Admin Navigation & Firebase Auth Logic ---
         function switchToAdminPage() {
             document.getElementById('websiteContent').style.display = 'none';
             document.getElementById('mainHeader').style.display = 'none';
             document.getElementById('adminSection').style.display = 'block';
             window.scrollTo(0, 0);
 
-            // Strictly check if user is already authenticated via Firebase Auth
             const currentUser = auth.currentUser;
             if (currentUser) {
                 document.getElementById('adminLoginScreen').style.display = 'none';
                 document.getElementById('adminDashboardScreen').style.display = 'block';
                 fetchAdminRegistrations();
             } else {
-                // Force user to see login screen if not logged in
                 document.getElementById('adminLoginScreen').style.display = 'block';
                 document.getElementById('adminDashboardScreen').style.display = 'none';
                 document.getElementById('adminEmailInput').value = '';
@@ -894,7 +920,7 @@
 
         function fetchAdminRegistrations() {
             const tbody = document.getElementById('adminTableBody');
-            tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--gray);">Loading records from database...</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" class="p-6 text-center text-slate-500">Loading records from database...</td></tr>';
 
             db.collection("registrations").get().then((querySnapshot) => {
                 allRegistrationsCache = [];
@@ -906,7 +932,7 @@
                 renderTableData(allRegistrationsCache);
             }).catch((error) => {
                 console.error("Error getting documents: ", error);
-                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--danger);">Failed to load records. Check rules.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" class="p-6 text-center text-rose-400">Failed to load records. Check rules.</td></tr>';
             });
         }
 
@@ -925,8 +951,14 @@
         function filterTable(statusFilter, btnElement) {
             currentFilter = statusFilter;
             
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            if(btnElement) {
+                btnElement.classList.remove('bg-slate-800', 'text-slate-300');
+                btnElement.classList.add('bg-emerald-500', 'text-white');
+            }
 
             let filtered = allRegistrationsCache;
             if (statusFilter !== 'all') {
@@ -944,7 +976,7 @@
             tbody.innerHTML = '';
 
             if (dataArray.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--gray);">No registration records found under this view.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" class="p-6 text-center text-slate-500">No registration records found under this view.</td></tr>';
                 document.getElementById('tableCountText').textContent = `Showing 0 records`;
                 return;
             }
@@ -955,27 +987,27 @@
                 const dateFormatted = data.createdAt ? new Date(data.createdAt).toLocaleDateString() : 'N/A';
                 const currentStatus = data.status || 'Pending';
                 
-                let badgeClass = 'status-pending';
-                if(currentStatus === 'Enrolled') badgeClass = 'status-enrolled';
-                if(currentStatus === 'Not Interested') badgeClass = 'status-not-interested';
+                let badgeBg = 'bg-amber-500/20 text-amber-400';
+                if(currentStatus === 'Enrolled') badgeBg = 'bg-emerald-500/20 text-emerald-400';
+                if(currentStatus === 'Not Interested') badgeBg = 'bg-rose-500/20 text-rose-400';
 
                 const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-950/50 transition-colors';
                 tr.innerHTML = `
-                    <td><strong>${data.studentName || 'N/A'}</strong></td>
-                    <td>${data.grade || 'N/A'}</td>
-                    <td>${data.subject || 'N/A'}</td>
-                    <td>${data.mode || 'N/A'}</td>
-                    <td><a href="tel:${data.contactNumber}" style="color: var(--primary); text-decoration: none;">${data.contactNumber || 'N/A'}</a></td>
-                    <td>${dateFormatted}</td>
-                    <td>
-                        <select class="status-badge ${badgeClass}" onchange="updateLeadStatus('${data.id}', this.value)">
-                            <option value="Pending" ${currentStatus === 'Pending' ? 'selected' : ''}>🟡 Pending Review</option>
-                            <option value="Enrolled" ${currentStatus === 'Enrolled' ? 'selected' : ''}>🟢 Enrolled</option>
-                            <option value="Not Interested" ${currentStatus === 'Not Interested' ? 'selected' : ''}>🔴 Not Interested</option>
+                    <td class="p-4 font-semibold text-white">${data.studentName || 'N/A'}</td>
+                    <td class="p-4 text-slate-300">${data.grade || 'N/A'}</td>
+                    <td class="p-4 text-slate-300">${data.mode || 'N/A'}</td>
+                    <td class="p-4"><a href="tel:${data.contactNumber}" class="text-emerald-400 hover:underline">${data.contactNumber || 'N/A'}</a></td>
+                    <td class="p-4 text-slate-400 text-xs">${dateFormatted}</td>
+                    <td class="p-4">
+                        <select class="px-3 py-1.5 rounded-xl font-semibold text-xs ${badgeBg} border border-slate-700 outline-none cursor-pointer" onchange="updateLeadStatus('${data.id}', this.value)">
+                            <option value="Pending" ${currentStatus === 'Pending' ? 'selected' : ''} class="bg-slate-900 text-amber-400">🟡 Pending Review</option>
+                            <option value="Enrolled" ${currentStatus === 'Enrolled' ? 'selected' : ''} class="bg-slate-900 text-emerald-400">🟢 Enrolled</option>
+                            <option value="Not Interested" ${currentStatus === 'Not Interested' ? 'selected' : ''} class="bg-slate-900 text-rose-400">🔴 Not Interested</option>
                         </select>
                     </td>
-                    <td>
-                        <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="deleteRegistration('${data.id}')">Delete</button>
+                    <td class="p-4 text-center">
+                        <button onclick="deleteRegistration('${data.id}')" class="px-3 py-1 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 text-xs font-bold transition-colors cursor-pointer">Delete</button>
                     </td>
                 `;
                 tbody.appendChild(tr);
